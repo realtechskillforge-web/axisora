@@ -31,8 +31,8 @@ export function FreelanceTemplate({ data }: { data: FreelanceData }) {
               {data.tagline}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link to="/support" className="btn-primary">Start a Project</Link>
-              <Link to="/freelancing" className="btn-ghost">All Services</Link>
+              <a href="support" className="btn-primary">Start a Project</a>
+              <a href="freelancing" className="btn-ghost">All Services</a>
             </div>
           </Reveal>
         </div>
