@@ -107,129 +107,59 @@ export function Header() {
 
       {/* Mobile drawer */}
       {open && (
-<div
-  className={`fixed inset-0 top-16 z-50 flex flex-col bg-background overflow-y-auto ${
-    open ? "block" : "hidden"
-  } md:hidden`}
->          {/* Header bar inside drawer */}
-          <div className="flex items-center justify-between border-b border-border px-5 py-4">
-            <p className="text-[10px] font-semibold tracking-[0.3em] text-muted-foreground">NAVIGATION</p>
-            <button onClick={() => setOpen(false)} className="text-muted-foreground hover:text-foreground">
-              <X size={18} />
-            </button>
-          </div>
+  <div className="border-t border-border bg-background md:hidden animate-in slide-in-from-top-2 duration-200">
+    <div className="container-prose flex flex-col gap-2 py-4">
 
-          <div className="flex flex-col px-5 py-4 gap-1">
+      <NavLink to="/">Home</NavLink>
+      <NavLink to="/about">About</NavLink>
 
-            {/* Home */}
-            <Link
-              to="/"
-              onClick={() => setOpen(false)}
-              className={`flex items-center justify-between rounded-xl px-4 py-3.5 text-[15px] font-medium transition-colors ${
-                path === "/" ? "bg-muted text-foreground" : "text-foreground hover:bg-muted"
-              }`}
-            >
-              Home
-            </Link>
+      <details className="group rounded-lg border border-border">
+        <summary className="flex cursor-pointer list-none items-center justify-between px-4 py-3 text-[14px] font-medium text-foreground">
+          Programs
+          <ChevronDown
+            size={16}
+            className="transition-transform group-open:rotate-180"
+          />
+        </summary>
 
-            {/* About */}
-            <Link
-              to="/about"
-              onClick={() => setOpen(false)}
-              className={`flex items-center justify-between rounded-xl px-4 py-3.5 text-[15px] font-medium transition-colors ${
-                path === "/about" ? "bg-muted text-foreground" : "text-foreground hover:bg-muted"
-              }`}
-            >
-              About
-            </Link>
-
-            {/* Programs accordion */}
-            <div className="rounded-xl overflow-hidden border border-border mt-1">
-              <button
-                onClick={() => setProgramsOpen((v) => !v)}
-                className={`flex w-full items-center justify-between px-4 py-3.5 text-[15px] font-medium transition-colors ${
-                  path.startsWith("/programs") ? "bg-muted text-foreground" : "text-foreground hover:bg-muted"
-                }`}
-              >
-                Programs
-                <ChevronDown size={16} className={`text-muted-foreground transition-transform duration-200 ${programsOpen ? "rotate-180" : ""}`} />
-              </button>
-              {programsOpen && (
-                <div className="border-t border-border bg-paper px-2 py-2 flex flex-col gap-0.5">
-                  {programs.map((p) => (
-                    <Link
-                      key={p.to}
-                      to={p.to}
-                      onClick={() => setOpen(false)}
-                      className={`flex items-center justify-between rounded-lg px-3 py-2.5 text-[13.5px] transition-colors ${
-                        path === p.to ? "bg-muted font-medium text-foreground" : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                      }`}
-                    >
-                      {p.label}
-                      <ArrowUpRight size={13} className="shrink-0 opacity-40" />
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Freelancing accordion */}
-            <div className="rounded-xl overflow-hidden border border-border mt-1">
-              <button
-                onClick={() => setFreelancingOpen((v) => !v)}
-                className={`flex w-full items-center justify-between px-4 py-3.5 text-[15px] font-medium transition-colors ${
-                  path.startsWith("/freelancing") ? "bg-muted text-foreground" : "text-foreground hover:bg-muted"
-                }`}
-              >
-                Freelancing
-                <ChevronDown size={16} className={`text-muted-foreground transition-transform duration-200 ${freelancingOpen ? "rotate-180" : ""}`} />
-              </button>
-              {freelancingOpen && (
-                <div className="border-t border-border bg-paper px-2 py-2 flex flex-col gap-0.5">
-                  {freelancing.map((p) => (
-                    <Link
-                      key={p.to}
-                      to={p.to}
-                      onClick={() => setOpen(false)}
-                      className={`flex items-center justify-between rounded-lg px-3 py-2.5 text-[13.5px] transition-colors ${
-                        path === p.to ? "bg-muted font-medium text-foreground" : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                      }`}
-                    >
-                      {p.label}
-                      <ArrowUpRight size={13} className="shrink-0 opacity-40" />
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Support */}
-            <Link
-              to="/support"
-              onClick={() => setOpen(false)}
-              className={`flex items-center justify-between rounded-xl px-4 py-3.5 text-[15px] font-medium transition-colors mt-1 ${
-                path === "/support" ? "bg-muted text-foreground" : "text-foreground hover:bg-muted"
-              }`}
-            >
-              Support
-            </Link>
-          </div>
-
-          {/* CTA at bottom */}
-          <div className="mt-auto border-t border-border px-5 py-5">
-            <Link
-              to="/support"
-              onClick={() => setOpen(false)}
-              className="btn-primary w-full justify-center text-[14px] py-3"
-            >
-              Talk to Us
-            </Link>
-            <p className="mt-3 text-center text-[11px] text-muted-foreground">
-              Usually reply within minutes on WhatsApp
-            </p>
-          </div>
+        <div className="flex flex-col gap-1 px-2 pb-2">
+          {programs.map((p) => (
+            <NavLink key={p.to} to={p.to}>
+              {p.label}
+            </NavLink>
+          ))}
         </div>
-      )}
+      </details>
+
+      <details className="group rounded-lg border border-border">
+        <summary className="flex cursor-pointer list-none items-center justify-between px-4 py-3 text-[14px] font-medium text-foreground">
+          Freelancing
+          <ChevronDown
+            size={16}
+            className="transition-transform group-open:rotate-180"
+          />
+        </summary>
+
+        <div className="flex flex-col gap-1 px-2 pb-2">
+          {freelancing.map((p) => (
+            <NavLink key={p.to} to={p.to}>
+              {p.label}
+            </NavLink>
+          ))}
+        </div>
+      </details>
+
+      <NavLink to="/support">Support</NavLink>
+
+      <Link
+        to="/support"
+        className="btn-primary mt-3 w-full justify-center"
+      >
+        Talk to Us
+      </Link>
+    </div>
+  </div>
+)}
     </header>
   );
 }
