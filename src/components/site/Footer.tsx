@@ -1,5 +1,3 @@
-import { Link } from "@tanstack/react-router";
-
 export function Footer() {
   return (
     <footer className="border-t border-border bg-paper">
@@ -18,20 +16,20 @@ export function Footer() {
         <div>
           <p className="eyebrow mb-4">Academy</p>
           <ul className="space-y-2 text-[13.5px]">
-            <li><Link to="/programs" className="text-muted-foreground hover:text-foreground">All Programs</Link></li>
-            <li><Link to="/programs/flutter" className="text-muted-foreground hover:text-foreground">Flutter</Link></li>
-            <li><Link to="/programs/angular-frontend" className="text-muted-foreground hover:text-foreground">Angular</Link></li>
-            <li><Link to="/programs/java-backend" className="text-muted-foreground hover:text-foreground">Java Backend</Link></li>
+            <li><a href="programs" className="text-muted-foreground hover:text-foreground">All Programs</a></li>
+            <li><a href="programs/flutter" className="text-muted-foreground hover:text-foreground">Flutter</a></li>
+            <li><a href="programs/angular-frontend" className="text-muted-foreground hover:text-foreground">Angular</a></li>
+            <li><a href="programs/java-backend" className="text-muted-foreground hover:text-foreground">Java Backend</a></li>
           </ul>
         </div>
 
         <div>
           <p className="eyebrow mb-4">Freelancing</p>
           <ul className="space-y-2 text-[13.5px]">
-            <li><Link to="/freelancing" className="text-muted-foreground hover:text-foreground">Our Work</Link></li>
-            <li><Link to="/freelancing/full-stack" className="text-muted-foreground hover:text-foreground">Full Stack</Link></li>
-            <li><Link to="/freelancing/wordpress-shopify" className="text-muted-foreground hover:text-foreground">WordPress / Shopify</Link></li>
-            <li><Link to="/freelancing/digital-marketing" className="text-muted-foreground hover:text-foreground">Digital Marketing</Link></li>
+            <li><a href="freelancing" className="text-muted-foreground hover:text-foreground">Our Work</a></li>
+            <li><a href="freelancing/full-stack" className="text-muted-foreground hover:text-foreground">Full Stack</a></li>
+            <li><a href="freelancing/wordpress-shopify" className="text-muted-foreground hover:text-foreground">WordPress / Shopify</a></li>
+            <li><a href="freelancing/digital-marketing" className="text-muted-foreground hover:text-foreground">Digital Marketing</a></li>
           </ul>
         </div>
       </div>
