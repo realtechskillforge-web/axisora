@@ -64,7 +64,7 @@ export function InquiryForm({ defaultCourse, compact = false, title, subtitle }:
       try {
         await fetch(SITE.sheetsWebhookUrl, {
           method: "POST",
-          mode: "no-cors", // Apps Script doesn't return CORS headers; fire-and-forget
+          mode: "no-cors",
           headers: { "Content-Type": "text/plain;charset=utf-8" },
           body: JSON.stringify(payload),
         });
@@ -73,9 +73,14 @@ export function InquiryForm({ defaultCourse, compact = false, title, subtitle }:
       }
     }
 
-    // Always open WhatsApp with the formatted message
+    // Open WhatsApp in a new tab — site stays open
     try {
-      window.open(buildWhatsAppUrl(buildMessage()), "_blank");
+      const waUrl = buildWhatsAppUrl(buildMessage());
+      const waWindow = window.open(waUrl, "_blank", "noopener,noreferrer");
+      // If pop-up was blocked, fall back to same-tab navigation
+      if (!waWindow) {
+        window.location.href = waUrl;
+      }
       setStatus("ok");
     } catch (err) {
       setStatus("err");
@@ -157,7 +162,10 @@ export function InquiryForm({ defaultCourse, compact = false, title, subtitle }:
         </button>
         <button
           type="button"
-          onClick={() => window.open(buildWhatsAppUrl(SITE.defaultWhatsAppMessage), "_blank")}
+          onClick={() => {
+            const waWindow = window.open(buildWhatsAppUrl(SITE.defaultWhatsAppMessage), "_blank", "noopener,noreferrer");
+            if (!waWindow) window.location.href = buildWhatsAppUrl(SITE.defaultWhatsAppMessage);
+          }}
           className="btn-ghost"
         >
           <FileText size={14} className="mr-2" /> Quick WhatsApp
