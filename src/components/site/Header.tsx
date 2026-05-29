@@ -107,8 +107,11 @@ export function Header() {
 
       {/* Mobile drawer */}
       {open && (
-        <div className="fixed inset-0 top-16 z-50 flex flex-col bg-background md:hidden overflow-y-auto">
-          {/* Header bar inside drawer */}
+<div
+  className={`fixed inset-0 top-16 z-50 flex flex-col bg-background overflow-y-auto ${
+    open ? "block" : "hidden"
+  } md:hidden`}
+>          {/* Header bar inside drawer */}
           <div className="flex items-center justify-between border-b border-border px-5 py-4">
             <p className="text-[10px] font-semibold tracking-[0.3em] text-muted-foreground">NAVIGATION</p>
             <button onClick={() => setOpen(false)} className="text-muted-foreground hover:text-foreground">
