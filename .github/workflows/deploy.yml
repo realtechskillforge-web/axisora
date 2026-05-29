@@ -29,10 +29,10 @@ jobs:
       - name: Install dependencies
         run: npm install --legacy-peer-deps
 
-      - name: Build
-        run: VITE_BASE_PATH=/realtechskillforge-web npx vite build
+      -- name: Build
+        run: npx vite build
         env:
-          VITE_BASE_PATH: /realtechskillforge-web
+          VITE_BASE_PATH: /axisora
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
