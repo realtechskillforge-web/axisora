@@ -113,41 +113,52 @@ export function Header() {
       <NavLink to="/">Home</NavLink>
       <NavLink to="/about">About</NavLink>
 
-      <details className="group rounded-lg border border-border">
-        <summary className="flex cursor-pointer list-none items-center justify-between px-4 py-3 text-[14px] font-medium text-foreground">
-          Programs
-          <ChevronDown
-            size={16}
-            className="transition-transform group-open:rotate-180"
-          />
-        </summary>
+      <details className="group rounded-2xl border border-border/60 bg-background">
+  <summary className="flex cursor-pointer list-none items-center justify-between px-5 py-4 text-[15px] font-semibold text-foreground">
+    Programs
 
-        <div className="flex flex-col gap-1 px-2 pb-2">
-          {programs.map((p) => (
-            <NavLink key={p.to} to={p.to}>
-              {p.label}
-            </NavLink>
-          ))}
-        </div>
-      </details>
+    <ChevronDown
+      size={18}
+      className="transition-transform duration-200 group-open:rotate-180"
+    />
+  </summary>
 
-      <details className="group rounded-lg border border-border">
-        <summary className="flex cursor-pointer list-none items-center justify-between px-4 py-3 text-[14px] font-medium text-foreground">
-          Freelancing
-          <ChevronDown
-            size={16}
-            className="transition-transform group-open:rotate-180"
-          />
-        </summary>
+  <div className="mx-3 mb-3 flex flex-col gap-2 rounded-xl bg-muted/30 px-3 py-3">
+    {programs.map((p) => (
+      <Link
+        key={p.to}
+        to={p.to}
+        className="text-[13px] leading-relaxed text-muted-foreground transition-colors hover:text-foreground"
+      >
+        {p.label}
+      </Link>
+    ))}
+  </div>
+</details>
 
-        <div className="flex flex-col gap-1 px-2 pb-2">
-          {freelancing.map((p) => (
-            <NavLink key={p.to} to={p.to}>
-              {p.label}
-            </NavLink>
-          ))}
-        </div>
-      </details>
+      <details className="group rounded-2xl border border-border/60 bg-background">
+  <summary className="flex cursor-pointer list-none items-center justify-between px-5 py-4 text-[15px] font-semibold text-foreground">
+    Freelancing
+
+    <ChevronDown
+      size={18}
+      className="transition-transform duration-200 group-open:rotate-180"
+    />
+  </summary>
+
+  <div className="mx-3 mb-3 flex flex-col gap-2 rounded-xl bg-muted/30 px-3 py-3">
+    {freelancing.map((p) => (
+      <Link
+        key={p.to}
+        to={p.to}
+        onClick={() => setOpen(false)}
+        className="text-[13px] leading-relaxed text-muted-foreground transition-colors hover:text-foreground"
+      >
+        {p.label}
+      </Link>
+    ))}
+  </div>
+</details>
 
       <NavLink to="/support">Support</NavLink>
 
