@@ -30,7 +30,9 @@ jobs:
         run: npm install --legacy-peer-deps
 
       - name: Build
-        run: VITE_BASE_PATH=/realtechskillforge-web npm run build
+        run: VITE_BASE_PATH=/realtechskillforge-web npx vite build
+        env:
+          VITE_BASE_PATH: /realtechskillforge-web
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
