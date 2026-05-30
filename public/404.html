@@ -9,7 +9,7 @@
       // GitHub Pages returns this 404.html. We store the path in sessionStorage
       // and redirect to /, where the React app will read it and navigate correctly.
       var path = window.location.pathname;
-      var base = "/"; // Change to "/<repo-name>/" if deploying to a sub-path
+      var base = "/axisora/"; // Change to "/<repo-name>/" if deploying to a sub-path
       // Strip the base from path before storing
       var stripped = path.startsWith(base) ? path.slice(base.length - 1) : path;
       sessionStorage.setItem("spa_redirect", stripped + window.location.search);
