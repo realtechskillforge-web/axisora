@@ -5,6 +5,7 @@ import { PROGRAMS } from "@/data/programs";
 import { FREELANCING, PROJECTS } from "@/data/freelancing";
 import { ArrowUpRight, Sparkles, Trophy, Briefcase } from "lucide-react";
 import heroImg from "@/assets/hero-ambient.jpg";
+import { PlacementBenefitsTeaser, PromoBannerStrip } from "@/components/site/PlacementBenefits";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -24,6 +25,10 @@ const freelanceList = Object.entries(FREELANCING);
 function Home() {
   return (
     <PageShell>
+
+      {/* PROMO BANNER STRIP */}
+      <PromoBannerStrip />
+
       {/* HERO */}
       <section className="relative overflow-hidden border-b border-border">
         <img src={heroImg} alt="" aria-hidden className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-80" />
@@ -57,7 +62,7 @@ function Home() {
         </div>
       </section>
 
-      {/* highlight strip */}
+      {/* HIGHLIGHT STRIP */}
       <section className="border-b border-border bg-paper">
         <div className="container-prose grid grid-cols-2 gap-px overflow-hidden md:grid-cols-4">
           {["Role-based programs", "Mentor-guided learning", "Real freelancing projects", "Top-5 paid opportunities"].map((s) => (
@@ -68,7 +73,7 @@ function Home() {
         </div>
       </section>
 
-      {/* TOP-5 freelancing highlight */}
+      {/* TOP-5 FREELANCING HIGHLIGHT */}
       <section className="border-b border-border bg-background">
         <div className="container-prose py-20">
           <Reveal>
@@ -117,7 +122,6 @@ function Home() {
       <section className="border-b border-border bg-paper">
         <div className="container-prose py-20">
           <Reveal>
-
             <p className="eyebrow mb-3">Academy · Programs</p>
             <h2 className="max-w-3xl text-balance text-3xl leading-[1.1] md:text-[44px]">
               Eight enterprise-grade tracks for modern technical careers
@@ -138,7 +142,7 @@ function Home() {
                       <p className="text-[11px] font-semibold tracking-[0.22em] text-muted-foreground">
                         0{i + 1}
                       </p>
-                      <h3 className="mt-3 text-[19px] leading-snug transition-colors" style={{ ['--c' as never]: p.color }}>
+                      <h3 className="mt-3 text-[19px] leading-snug transition-colors">
                         {p.title}
                       </h3>
                       <div className="mt-4 flex flex-wrap gap-2">
@@ -161,6 +165,9 @@ function Home() {
           </div>
         </div>
       </section>
+
+      {/* STUDENT PLACEMENT PROGRAMS TEASER */}
+      <PlacementBenefitsTeaser />
 
       {/* FREELANCING */}
       <section className="border-b border-border bg-background">
@@ -238,6 +245,7 @@ function Home() {
           </Reveal>
         </div>
       </section>
+
     </PageShell>
   );
 }
