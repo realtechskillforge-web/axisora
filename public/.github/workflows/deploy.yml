@@ -24,14 +24,35 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: "npm"
+          node-version: 24
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
 
       - name: Build
         run: npx vite build
+
+      - name: Copy index.html for all SPA routes
+        run: |
+          mkdir -p dist/programs dist/freelancing
+          cp dist/index.html dist/about/index.html || (mkdir -p dist/about && cp dist/index.html dist/about/index.html)
+          cp dist/index.html dist/support/index.html || (mkdir -p dist/support && cp dist/index.html dist/support/index.html)
+          cp dist/index.html dist/programs/index.html
+          mkdir -p dist/programs/java-fullstack-angular && cp dist/index.html dist/programs/java-fullstack-angular/index.html
+          mkdir -p dist/programs/ai-java-backend && cp dist/index.html dist/programs/ai-java-backend/index.html
+          mkdir -p dist/programs/angular-frontend && cp dist/index.html dist/programs/angular-frontend/index.html
+          mkdir -p dist/programs/flutter && cp dist/index.html dist/programs/flutter/index.html
+          mkdir -p dist/programs/android-java && cp dist/index.html dist/programs/android-java/index.html
+          mkdir -p dist/programs/digital-marketing && cp dist/index.html dist/programs/digital-marketing/index.html
+          mkdir -p dist/programs/java-placement && cp dist/index.html dist/programs/java-placement/index.html
+          mkdir -p dist/programs/python-placement && cp dist/index.html dist/programs/python-placement/index.html
+          cp dist/index.html dist/freelancing/index.html
+          mkdir -p dist/freelancing/full-stack && cp dist/index.html dist/freelancing/full-stack/index.html
+          mkdir -p dist/freelancing/frontend && cp dist/index.html dist/freelancing/frontend/index.html
+          mkdir -p dist/freelancing/wordpress-shopify && cp dist/index.html dist/freelancing/wordpress-shopify/index.html
+          mkdir -p dist/freelancing/static-sites && cp dist/index.html dist/freelancing/static-sites/index.html
+          mkdir -p dist/freelancing/digital-marketing && cp dist/index.html dist/freelancing/digital-marketing/index.html
+          mkdir -p dist/freelancing/seo && cp dist/index.html dist/freelancing/seo/index.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
