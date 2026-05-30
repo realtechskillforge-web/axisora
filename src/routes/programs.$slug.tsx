@@ -19,8 +19,14 @@ export const Route = createFileRoute("/programs/$slug")({
   component: ProgramPage,
 });
 
+const placementSlugs = ["java-placement", "python-placement"];
+
 function ProgramPage() {
   const { slug } = Route.useLoaderData();
-  const placementSlugs = ["java-placement", "python-placement"];
-return <ProgramTemplate data={program} isPlacement={placementSlugs.includes(slug)} />;
+  return (
+    <ProgramTemplate
+      data={PROGRAMS[slug]}
+      isPlacement={placementSlugs.includes(slug)}
+    />
+  );
 }
